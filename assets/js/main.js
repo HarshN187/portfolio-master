@@ -16,22 +16,22 @@ const navLinks = document.querySelectorAll(".nav-link");
 const sections = document.querySelectorAll(".section");
 
 window.addEventListener("scroll", () => {
-  let current = '';
-  sections.forEach(section => {
+  let current = "";
+  sections.forEach((section) => {
     const sectionTop = section.offsetTop;
     const sectionHeight = section.clientHeight;
     if (scrollY >= sectionTop - 390) {
-      current = section.getAttribute('id');
+      current = section.getAttribute("id");
     }
-  })
+  });
 
-  navLinks.forEach(link => {
-    link.classList.remove('active');
+  navLinks.forEach((link) => {
+    link.classList.remove("active");
     if (link.classList.contains(current)) {
-      link.classList.add('active');
+      link.classList.add("active");
     }
-  })
-})
+  });
+});
 
 // function linkAction() {
 //   /*Active link*/
@@ -42,12 +42,16 @@ window.addEventListener("scroll", () => {
 const navMenu = document.getElementById("nav-menu");
 //   navMenu.classList.remove("show");
 // }
-navLinks.forEach((n) => n.addEventListener("click", () => { navMenu.classList.remove("show") }));
+navLinks.forEach((n) =>
+  n.addEventListener("click", () => {
+    navMenu.classList.remove("show");
+  })
+);
 
 /*===== COPY Email =====*/
 const copy = document.getElementById("copy");
 copy.addEventListener("click", () => {
-  navigator.clipboard.writeText("kasulaarunteja@gmail.com");
+  navigator.clipboard.writeText("hnirmal913@gmail.com");
   copy.innerHTML = "copied";
   setTimeout(() => {
     copy.innerHTML = null;
@@ -83,25 +87,24 @@ sr.reveal(".skills-data", { interval: 100 });
 sr.reveal(".project-img", { interval: 200 });
 
 /*SCROLL CONTACT*/
-  // sr.reveal(".contact-input", { interval: 200 });
+// sr.reveal(".contact-input", { interval: 200 });
 
-  function myFunction(){
-    var element = document.body;
-    element.classList.toggle("dark-mode")
-  }
+function myFunction() {
+  var element = document.body;
+  element.classList.toggle("dark-mode");
+}
 
+var messageArr = ["MERN Developer", "Frontend Developer", "Backend Developer"];
+var textPosition = 0;
+var speed = 200;
 
-  var messageArr = ["MERN Developer", "Frontend Developer", "Backend Developer"];
-  var textPosition = 0;
-  var speed = 200;
+typewriter = () => {
+  // for(let i = 0; i < messageArr.length; i++) {
+  document.querySelector("#jobTitle").innerHTML = messageArr[0].substring(
+    0,
+    textPosition
+  );
+  if (textPosition++ != messageArr[0].length) setTimeout(typewriter, speed);
+};
 
-  typewriter = () => {
-    // for(let i = 0; i < messageArr.length; i++) {
-    document.querySelector("#jobTitle").innerHTML = messageArr[0].substring(0, textPosition)  ;
-    if(textPosition ++  != messageArr[0].length)
-        setTimeout(typewriter, speed)
-  }
-
-
-  window.addEventListener("load" , typewriter);
-
+window.addEventListener("load", typewriter);
